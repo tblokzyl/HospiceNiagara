@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: Raleway;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -14,4 +15,44 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.row {background-color:#cde4a2;}
+
+.green-header {
+    text-align: center;
+    background-color: #80a23e;
+    padding: 10px;
+}
+.gray-content{
+    border-radius: 0 0 15px 15px;
+    background-color: #ffffff;
+    padding-bottom: 10px;
+}
+
+.gray-content p {
+    padding: 0 10px 0px 20px;
+} 
+
+.gray-content-event {
+    padding: 0 0px 10px 0px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.gray-content img {
+    padding: 20px 20px 0px 20px;
+}
+
+html {
+    font-family: myFirstFont2, Arial, sans-serif;
+}
+
+@font-face {
+    font-family: myFirstFont2;
+    src: url(fonts/Raleway-Light.ttf);
+}
+
+li {
+    color: white;
 }
