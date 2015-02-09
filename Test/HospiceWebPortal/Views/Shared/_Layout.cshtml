@@ -8,8 +8,8 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body style="background-color: #cde4a2">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body style="background-color: #cde4a2;">
+    <div class="navbar navbar-inverse navbar-fixed-top ">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,7 +21,6 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Announcements", "Index", "Announcements")</li>
                     <li>@Html.ActionLink("Meetings", "Index", "Meetings")</li>
                     <li>@Html.ActionLink("Schedules", "Index", "Schedules")</li>
@@ -35,9 +34,8 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Hospice Niagara</p>
+            <p>&copy; @DateTime.Now.Year - Hospice Niagara - The Stabler Centre <br> 403 Ontario Street, Unit 2<br> St. Catharines, ON L2B 1L5 <br> Tel: (905) 984-8766 <br> Fax: (905) 984-8242</p>
         </footer>
     </div>
 

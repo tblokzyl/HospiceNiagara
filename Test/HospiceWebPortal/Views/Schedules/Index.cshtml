@@ -1,27 +1,67 @@
-﻿@model IEnumerable<HospiceWebPortal.Models.Schedule>
+﻿@*@model IEnumerable<HospiceWebPortal.Models.Schedule>*@
 
-@{
-    ViewBag.Title = "Index";
-}
+<div class="row">
+    <div class="col-md-4">
+        <div class="gray-content">
+            <h2 class="green-header">Action Required</h2>
+            <p>
+                <b>January 25, 2015</b> Wavelength<br />
+                Discuss hospice niagara web portal.
+            </p>
+            <p>
+                <b>January 26, 2015</b> Timothy Blokzyl<br />
+                Discuss progress with Dave and Peter.
+            </p>
+        </div>
+        <div class="gray-content">
+            <h2 class="green-header">Events</h2>
+            <p>
+                <b>January 25, 2015</b> Wavelength<br />
+                Discuss hospice niagara web portal.
+            </p>
+            <p>
+                <b>January 26, 2015</b> Timothy Blokzyl<br />
+                Discuss progress with Dave and Peter.
+            </p>
+        </div>
+        <div class="gray-content">
+            <h2 class="green-header">Announcements</h2>
+            <p style="text-align:left; padding: 0 15px 0 20px">
+                <strong>What Is Lorem Ipsum?</strong><br> Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br><br> <strong>Why Do We Use It?</strong><br> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <br><br> <strong>Where can I get some?</strong><br> It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+        </div>
+        <div class="gray-content">
+            <h2 class="green-header">Common Resources</h2>
+            <p>
+                <a href="#">Health and Safety</a><br>
+                <a href="#">Incident Report</a><br>
+                <a href="#">Mileage & Expense</a><br>
+                <a href="#">Volunteer Ticket Seller Information Sheet</a><br>
+            </p>
+        </div>
+    </div>
+    <div class="col-md-8" >
+        <h2 class="green-header" style="margin-top: 20px;">Schedules</h2>
+        <div class="gray-content" style="padding: 1000px 0 0 0; margin-top: -10px"></div>
+    </div>
+</div>
+    @*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th></th>
+        </tr>
 
-<h2>Index</h2>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
-</table>
+    </table>*@
