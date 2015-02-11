@@ -75,3 +75,16 @@ footer {
     text-align: center;
     color: white;
 }
+
+#logo {
+    width: 80%;
+    margin-top: -2.4em;
+}
+
+.login {
+    margin-top: 10%;
+}
+
+#login-header {
+    margin-top: -3.5%;
+}

@@ -10,6 +10,7 @@ using HospiceWebPortal.Models;
 
 namespace HospiceWebPortal.Controllers
 {
+    [Authorize]
     public class AdminsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

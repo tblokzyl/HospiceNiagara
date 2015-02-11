@@ -3,12 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Hospice Niagara</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body style="background-color: #cde4a2;">
+    @if (User.Identity.IsAuthenticated)
+    {
     <div class="navbar navbar-inverse navbar-fixed-top ">
         <div class="container">
             <div class="navbar-header">
@@ -26,7 +28,13 @@
                     <li>@Html.ActionLink("Schedules", "Index", "Schedules")</li>
                     <li>@Html.ActionLink("Contacts", "Index", "Contacts")</li>
                     <li>@Html.ActionLink("Resources", "Index", "Resources")</li>
-                    <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Admins", "Index", "Admins")</li>
+                        }
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -34,13 +42,20 @@
     </div>
     <div class="container body-content">
         @RenderBody()
+    </div>
         <footer>
             <p>&copy; @DateTime.Now.Year - Hospice Niagara - The Stabler Centre <br> 403 Ontario Street, Unit 2<br> St. Catharines, ON L2B 1L5 <br> Tel: (905) 984-8766 <br> Fax: (905) 984-8242</p>
         </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    }
+    
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <div class="container-fluid body-content">
+            @RenderBody()
+        </div>
+    }
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
 </body>
 </html>
