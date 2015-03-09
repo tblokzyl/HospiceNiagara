@@ -6,13 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using HospiceWebPortal.DAL;
 using HospiceWebPortal.Models;
 
 namespace HospiceWebPortal.Controllers
 {
     public class ResourcesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private HospiceWebPortalEntities db = new HospiceWebPortalEntities();
 
         // GET: Resources
         public ActionResult Index()

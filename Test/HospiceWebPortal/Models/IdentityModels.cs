@@ -29,13 +29,15 @@ namespace HospiceWebPortal.Models
             return new ApplicationDbContext();
         }
 
+        public System.Data.Entity.DbSet<HospiceWebPortal.Models.Home> Homes { get; set; }
+
         public System.Data.Entity.DbSet<HospiceWebPortal.Models.Announcement> Announcements { get; set; }
 
         public System.Data.Entity.DbSet<HospiceWebPortal.Models.Admin> Admins { get; set; }
 
         public System.Data.Entity.DbSet<HospiceWebPortal.Models.Contact> Contacts { get; set; }
 
-        public System.Data.Entity.DbSet<HospiceWebPortal.Models.Meetings> Meetings { get; set; }
+        public System.Data.Entity.DbSet<HospiceWebPortal.Models.Meeting> Meetings { get; set; }
 
         public System.Data.Entity.DbSet<HospiceWebPortal.Models.Resource> Resources { get; set; }
 

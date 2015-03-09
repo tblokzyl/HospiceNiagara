@@ -6,111 +6,112 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using HospiceWebPortal.DAL;
 using HospiceWebPortal.Models;
 
 namespace HospiceWebPortal.Controllers
 {
-    public class SchedulesController : Controller
+    public class HomesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private HospiceWebPortalEntities db = new HospiceWebPortalEntities();
 
-        // GET: Schedules
+        // GET: Homes
         public ActionResult Index()
         {
-            return View(db.Schedules.ToList());
+            return View(db.Homes.ToList());
         }
 
-        // GET: Schedules/Details/5
+        // GET: Homes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Schedule schedule = db.Schedules.Find(id);
-            if (schedule == null)
+            Home home = db.Homes.Find(id);
+            if (home == null)
             {
                 return HttpNotFound();
             }
-            return View(schedule);
+            return View(home);
         }
 
-        // GET: Schedules/Create
+        // GET: Homes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Schedules/Create
+        // POST: Homes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID")] Schedule schedule)
+        public ActionResult Create([Bind(Include = "ID,Title,Content,Created,Author")] Home home)
         {
             if (ModelState.IsValid)
             {
-                db.Schedules.Add(schedule);
+                db.Homes.Add(home);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(schedule);
+            return View(home);
         }
 
-        // GET: Schedules/Edit/5
+        // GET: Homes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Schedule schedule = db.Schedules.Find(id);
-            if (schedule == null)
+            Home home = db.Homes.Find(id);
+            if (home == null)
             {
                 return HttpNotFound();
             }
-            return View(schedule);
+            return View(home);
         }
 
-        // POST: Schedules/Edit/5
+        // POST: Homes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID")] Schedule schedule)
+        public ActionResult Edit([Bind(Include = "ID,Title,Content,Created,Author")] Home home)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(schedule).State = EntityState.Modified;
+                db.Entry(home).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(schedule);
+            return View(home);
         }
 
-        // GET: Schedules/Delete/5
+        // GET: Homes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Schedule schedule = db.Schedules.Find(id);
-            if (schedule == null)
+            Home home = db.Homes.Find(id);
+            if (home == null)
             {
                 return HttpNotFound();
             }
-            return View(schedule);
+            return View(home);
         }
 
-        // POST: Schedules/Delete/5
+        // POST: Homes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Schedule schedule = db.Schedules.Find(id);
-            db.Schedules.Remove(schedule);
+            Home home = db.Homes.Find(id);
+            db.Homes.Remove(home);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

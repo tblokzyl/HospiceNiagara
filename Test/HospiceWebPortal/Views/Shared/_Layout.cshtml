@@ -6,11 +6,12 @@
     <title>@ViewBag.Title - Hospice Niagara</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
 </head>
 <body style="background-color: #cde4a2;">
-    @if (User.Identity.IsAuthenticated)
-    {
+    @*@if (User.Identity.IsAuthenticated)
+    {*@
     <div class="navbar navbar-inverse navbar-fixed-top ">
         <div class="container">
             <div class="navbar-header">
@@ -19,11 +20,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Hospice Niagara", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Hospice Niagara", "Index", "Homes", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Announcements", "Index", "Announcements")</li>
+                    <li>@Html.ActionLink("Announcements", "Index", "AnnouncementsController")</li>
                     <li>@Html.ActionLink("Meetings", "Index", "Meetings")</li>
                     <li>@Html.ActionLink("Schedules", "Index", "Schedules")</li>
                     <li>@Html.ActionLink("Contacts", "Index", "Contacts")</li>
@@ -46,14 +47,14 @@
         <footer>
             <p>&copy; @DateTime.Now.Year - Hospice Niagara - The Stabler Centre <br> 403 Ontario Street, Unit 2<br> St. Catharines, ON L2B 1L5 <br> Tel: (905) 984-8766 <br> Fax: (905) 984-8242</p>
         </footer>
-    }
+    @*}*@
     
-    @if (!User.Identity.IsAuthenticated)
+    @*@if (!User.Identity.IsAuthenticated)
     {
-        <div class="container-fluid body-content">
+        <div class="container body-content">
             @RenderBody()
         </div>
-    }
+    }*@
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)

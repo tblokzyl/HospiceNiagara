@@ -1,7 +1,17 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    font-family: Raleway;
+    font-family: 'Open Sans';
+}
+
+h2
+{
+    font-family: 'Open Sans';
+}
+
+.common-resources p, a, href
+{
+    /*color: #7a5ba5;*/
 }
 
 /* Set padding to keep content from hitting the edges */

@@ -6,13 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using HospiceWebPortal.DAL;
 using HospiceWebPortal.Models;
 
 namespace HospiceWebPortal.Controllers
 {
     public class AnnouncementsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private HospiceWebPortalEntities db = new HospiceWebPortalEntities();
 
         // GET: Announcements
         public ActionResult Index()
@@ -46,7 +47,7 @@ namespace HospiceWebPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID")] Announcement announcement)
+        public ActionResult Create([Bind(Include = "ID,Title,Content,Created,Author")] Announcement announcement)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +79,7 @@ namespace HospiceWebPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID")] Announcement announcement)
+        public ActionResult Edit([Bind(Include = "ID,Title,Content,Created,Author")] Announcement announcement)
         {
             if (ModelState.IsValid)
             {

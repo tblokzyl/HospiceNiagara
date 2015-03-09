@@ -5,7 +5,7 @@ using System.Web;
 
 namespace HospiceWebPortal.Models
 {
-    public class Meetings
+    public class Meeting
     {
         public int ID { get; set; }
     }

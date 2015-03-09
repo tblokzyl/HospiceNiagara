@@ -1,6 +1,12 @@
 ﻿@using HospiceWebPortal.Models
 @model LoginViewModel
 
+@*Redirects if already logged in.*@
+@if (User.Identity.IsAuthenticated)
+{
+    Response.Redirect("~/Home");
+}
+
 <div class="row">
 <div class="col-md-2">
     <img id="logo" src="~/Images/Stabler-Centre---black-no-bkg.gif">
