@@ -163,7 +163,9 @@
     <Compile Include="Controllers\AnnouncementsController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\HomesController.cs" />
+    <Compile Include="Controllers\MeetingsController.cs" />
     <Compile Include="Controllers\ResourcesController.cs" />
+    <Compile Include="Controllers\SchedulesController.cs" />
     <Compile Include="DAL\HospiceWebPortalEntities.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -176,12 +178,16 @@
     <Compile Include="Migrations\201503090928210_models.Designer.cs">
       <DependentUpon>201503090928210_models.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503091426554_small_change.cs" />
+    <Compile Include="Migrations\201503091426554_small_change.Designer.cs">
+      <DependentUpon>201503091426554_small_change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\Home.cs" />
+    <Compile Include="Models\Homes.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Meeting.cs" />
     <Compile Include="Models\Resource.cs" />
@@ -281,11 +287,6 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Announcements\Create.cshtml" />
-    <Content Include="Views\Announcements\Delete.cshtml" />
-    <Content Include="Views\Announcements\Details.cshtml" />
-    <Content Include="Views\Announcements\Edit.cshtml" />
-    <Content Include="Views\Announcements\Index.cshtml" />
     <Content Include="Views\Admins\Create.cshtml" />
     <Content Include="Views\Admins\Delete.cshtml" />
     <Content Include="Views\Admins\Details.cshtml" />
@@ -316,6 +317,11 @@
     <Content Include="Views\Homes\Details.cshtml" />
     <Content Include="Views\Homes\Edit.cshtml" />
     <Content Include="Views\Homes\Index.cshtml" />
+    <Content Include="Views\Announcements\Create.cshtml" />
+    <Content Include="Views\Announcements\Delete.cshtml" />
+    <Content Include="Views\Announcements\Details.cshtml" />
+    <Content Include="Views\Announcements\Edit.cshtml" />
+    <Content Include="Views\Announcements\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -333,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503090928210_models.resx">
       <DependentUpon>201503090928210_models.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503091426554_small_change.resx">
+      <DependentUpon>201503091426554_small_change.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
