@@ -37,7 +37,7 @@ namespace HospiceWebPortal.Models
         [RegularExpression("^\\d{10}$", ErrorMessage = "The phone number must be exactly 10 numeric digits.")]
         [DataType(DataType.PhoneNumber)]
         [DisplayFormat(DataFormatString = "{0:(###) ###-####}", ApplyFormatInEditMode = false)]
-        public Int64 Phone { get; set; }
+        public Int64? Phone { get; set; }
 
         public int EXT { get; set; }
     }

@@ -86,7 +86,6 @@ using System.Text;
                     FirstName = "Alice",
                     LastName = "Merry",
                     Position = "Community Relations Manager",
-                    Phone = 1234567890,
                     EXT = 230
                 },
                 new Contact 
@@ -94,7 +93,6 @@ using System.Text;
                     FirstName = "Andrea",
                     LastName = "Crompton",
                     Position = "Community Relations Associate",
-                                        Phone = 1234567890,
                     EXT = 231
                 },
                 new Contact 
@@ -102,7 +100,6 @@ using System.Text;
                     FirstName = "Barbara",
                     LastName = "Cowell",
                     Position = "Executive Assistant",
-                                        Phone = 1234567890,
                     EXT = 223
                 },
                 new Contact 
@@ -110,7 +107,6 @@ using System.Text;
                     FirstName = "Barb",
                     LastName = "Nolan",
                     Position = "Day Hospice Coordinator",
-                                        Phone = 1234567890,
                     EXT = 270
                 },
                 new Contact 
@@ -126,7 +122,6 @@ using System.Text;
                     FirstName = "Diane",
                     LastName = "Fahlman",
                     Position = "Legacy Associate",
-                                        Phone = 1234567890,
                     EXT = 250
                 },
                 new Contact 
@@ -142,7 +137,6 @@ using System.Text;
                     FirstName = "Dorothy",
                     LastName = "Hunse",
                     Position = "Chaplain/Psychosocial-Spiritual Advisor",
-                                        Phone = 1234567890,
                     EXT = 249
                 },
                 new Contact 
@@ -158,7 +152,6 @@ using System.Text;
                     FirstName = "Jessica",
                     LastName = "Estabrooks",
                     Position = "Finance and Operations Manager",
-                                        Phone = 1234567890,
                     EXT = 238
                 }
             };

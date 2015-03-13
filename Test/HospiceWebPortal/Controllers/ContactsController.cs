@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using HospiceWebPortal.DAL;
 using HospiceWebPortal.Models;
+using PagedList;
 
 namespace HospiceWebPortal.Controllers
 {
@@ -16,8 +17,11 @@ namespace HospiceWebPortal.Controllers
         private HospiceWebPortalEntities db = new HospiceWebPortalEntities();
 
         // GET: Contacts
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 3)
         {
+            List<Contact> contacts = db.Contacts.ToList();
+            PagedList<Contact> model = new PagedList<Contact>(contacts, page, pageSize);
+
             return View(db.Contacts.ToList());
         }
 
