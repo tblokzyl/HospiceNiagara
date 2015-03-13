@@ -182,6 +182,10 @@
     <Compile Include="Migrations\201503091426554_small_change.Designer.cs">
       <DependentUpon>201503091426554_small_change.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503130033499_contacts.cs" />
+    <Compile Include="Migrations\201503130033499_contacts.Designer.cs">
+      <DependentUpon>201503130033499_contacts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -342,6 +346,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503091426554_small_change.resx">
       <DependentUpon>201503091426554_small_change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503122334305_home.cs.resx" />
+    <EmbeddedResource Include="Migrations\201503130033499_contacts.resx">
+      <DependentUpon>201503130033499_contacts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

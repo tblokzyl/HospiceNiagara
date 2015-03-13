@@ -4,24 +4,75 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="gray-content">
+            
+            <div class="green-header" style="margin-top: 20px; padding-bottom:20px;">
+                <h2>Staff Contact Information</h2>
+            </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th></th>
-    </tr>
+                <p style="padding-top:10px;">
+                    @Html.ActionLink("Create New Contact", "Create")
+                </p>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+            <div class="contact-content" style="margin: 0 10px 0 10px;">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LastName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Position)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EXT)
+                        </th>
+                        <th></th>
+                    </tr>
 
-</table>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Position)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EXT)
+                            </td>
+                            <td>
+
+                                <a href="@Url.Action("Delete", new { id = item.ID })" style="font-size:1em; color:black; padding-left:5px; float:right;">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                    <span class="sr-only" style="text-align:right;">Delete</span>
+                                </a>
+                                <a href="@Url.Action("Edit", new { id = item.ID })" style="font-size:1em; color:black; float:right;">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                    <span class="sr-only" style="text-align:right;">Edit</span>
+                                </a>
+
+                                @*////This will add a details view if neccessary////*@
+                                @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

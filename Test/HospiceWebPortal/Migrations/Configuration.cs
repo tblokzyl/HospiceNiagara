@@ -1,13 +1,15 @@
 namespace HospiceWebPortal.Migrations
 {
     using HospiceWebPortal.Models;
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
+using System.Linq;
+using System.Text;
 
     internal sealed class Configuration : DbMigrationsConfiguration<HospiceWebPortal.DAL.HospiceWebPortalEntities>
     {
@@ -22,7 +24,6 @@ namespace HospiceWebPortal.Migrations
             {
                 new Home 
                 { 
-                    ID = 0, 
                     Title = "Nullam fringilla mattis tincidunt", 
                     Content = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making " 
                     + "it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, "
@@ -34,8 +35,7 @@ namespace HospiceWebPortal.Migrations
                 },
 
                 new Home 
-                {
-                    ID = 1,  
+                {  
                     Title = "Suspendisse tincidunt tellus in cursus", 
                     Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et quam libero. Ut viverra erat eu placerat tincidunt. Maecenas vehicula tortor ut " 
                     + "ullamcorper lacinia. Duis feugiat enim turpis, efficitur faucibus quam fermentum nec. Donec sodales tincidunt nisl, sed hendrerit felis feugiat sed. Aliquam eu urna " 
@@ -51,7 +51,6 @@ namespace HospiceWebPortal.Migrations
 
                 new Home 
                 { 
-                    ID = 2, 
                     Title = "Lorem ipsum dolor sit amet", 
                     Content = "Aenean tristique at tellus quis consequat. Aenean ex nibh, fringilla a nulla in, elementum ultricies tortor. Nullam at gravida lacus. Integer molestie odio non " 
                     + "nunc dictum venenatis. Fusce ultrices dignissim eleifend. Nulla facilisi. Nunc purus lorem, ultricies ut tellus at, vehicula semper sem. Fusce sit amet massa ligula. " 
@@ -71,6 +70,120 @@ namespace HospiceWebPortal.Migrations
             };
             homeArticles.ForEach(d => context.Homes.AddOrUpdate(n => n.Title, d));
             context.SaveChanges();
+
+            var contacts = new List<Contact>
+            {
+                new Contact 
+                { 
+                    FirstName = "Timothy",
+                    LastName = "Blokzyl",
+                    Position = "Lead Programmer",
+                    Phone = 1234567890,
+                    EXT = 777
+                },
+                new Contact 
+                { 
+                    FirstName = "Alice",
+                    LastName = "Merry",
+                    Position = "Community Relations Manager",
+                    Phone = 1234567890,
+                    EXT = 230
+                },
+                new Contact 
+                { 
+                    FirstName = "Andrea",
+                    LastName = "Crompton",
+                    Position = "Community Relations Associate",
+                                        Phone = 1234567890,
+                    EXT = 231
+                },
+                new Contact 
+                { 
+                    FirstName = "Barbara",
+                    LastName = "Cowell",
+                    Position = "Executive Assistant",
+                                        Phone = 1234567890,
+                    EXT = 223
+                },
+                new Contact 
+                { 
+                    FirstName = "Barb",
+                    LastName = "Nolan",
+                    Position = "Day Hospice Coordinator",
+                                        Phone = 1234567890,
+                    EXT = 270
+                },
+                new Contact 
+                { 
+                    FirstName = "Carol",
+                    LastName = "Nagy",
+                    Position = "Executive Director",
+                    Phone = 2894078197,
+                    EXT = 225
+                },
+                new Contact 
+                { 
+                    FirstName = "Diane",
+                    LastName = "Fahlman",
+                    Position = "Legacy Associate",
+                                        Phone = 1234567890,
+                    EXT = 250
+                },
+                new Contact 
+                { 
+                    FirstName = "Diane",
+                    LastName = "Reid",
+                    Position = "Palliative Care Consultant",
+                    Phone = 9055156276,
+                    EXT = 232
+                },
+                new Contact 
+                { 
+                    FirstName = "Dorothy",
+                    LastName = "Hunse",
+                    Position = "Chaplain/Psychosocial-Spiritual Advisor",
+                                        Phone = 1234567890,
+                    EXT = 249
+                },
+                new Contact 
+                { 
+                    FirstName = "Brian",
+                    LastName = " Kerley",
+                    Position = "Medical Director",
+                    Phone = 9056415684,
+                    EXT = 234
+                },
+                new Contact 
+                { 
+                    FirstName = "Jessica",
+                    LastName = "Estabrooks",
+                    Position = "Finance and Operations Manager",
+                                        Phone = 1234567890,
+                    EXT = 238
+                }
+            };
+            contacts.ForEach(d => context.Contacts.AddOrUpdate(n => n.ID, d));
+    try
+    {
+        context.SaveChanges();
+    }
+    catch (DbEntityValidationException ex)
+    {
+        var sb = new StringBuilder();
+        foreach (var failure in ex.EntityValidationErrors)
+        {
+            sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+            foreach (var error in failure.ValidationErrors)
+            {
+                sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                sb.AppendLine();
+            }
+        }
+        throw new DbEntityValidationException(
+            "Entity Validation Failed - errors follow:\n" +
+            sb.ToString(), ex
+        );
+    }
 
             ////Role Manager
             //var roleManager = new RoleManager<IdentityRole>(new
