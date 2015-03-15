@@ -67,14 +67,22 @@
                     @Html.ActionLink("Create New Contact", "Create")
                 </p>
 
+            @using (Html.BeginForm())
+            {
+                <p>
+                    Find by name: @Html.TextBox("SearchString")
+                    <input type="submit" value="Search" />
+                </p>
+            }
+
             <div class="contact-content" style="margin: 0 10px 0 10px;">
                 <table class="table">
                     <tr>
                         <th>
-                            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FNameSortParm })
                         </th>
                         <th>
-                            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LNameSortParm })
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Position)

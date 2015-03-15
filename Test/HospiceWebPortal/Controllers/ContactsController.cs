@@ -17,25 +17,30 @@ namespace HospiceWebPortal.Controllers
         private HospiceWebPortalEntities db = new HospiceWebPortalEntities();
 
         // GET: Contacts
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            var students = from s in db.Contacts
+            ViewBag.FNameSortParm = String.IsNullOrEmpty(sortOrder) ? "FName_desc" : "";
+            ViewBag.LNameSortParm = sortOrder == "LName" ? "LName_desc" : "LName";
+            var contacts = from s in db.Contacts
                            select s;
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    contacts = contacts.Where(s => s.LastName.Contains(searchString)
+                                           || s.FirstName.Contains(searchString));
+                }
             switch (sortOrder)
             {
                 case "name_desc":
-                    students = students.OrderByDescending(s => s.LastName);
+                    contacts = contacts.OrderByDescending(s => s.LastName);
                     break;
                 case "Date":
-                    students = students.OrderBy(s => s.FirstName);
+                    contacts = contacts.OrderBy(s => s.FirstName);
                     break;
                 case "date_desc":
-                    students = students.OrderByDescending(s => s.FirstName);
+                    contacts = contacts.OrderByDescending(s => s.FirstName);
                     break;
                 default:
-                    students = students.OrderBy(s => s.LastName);
+                    contacts = contacts.OrderBy(s => s.LastName);
                     break;
             }
 
