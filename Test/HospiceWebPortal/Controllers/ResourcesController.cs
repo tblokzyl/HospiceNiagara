@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using HospiceWebPortal.DAL;
 using HospiceWebPortal.Models;
+using System.IO;
 
 namespace HospiceWebPortal.Controllers
 {
@@ -19,6 +20,31 @@ namespace HospiceWebPortal.Controllers
         public ActionResult Index()
         {
             return View(db.Resources.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult Index(string fileDescription)
+        {
+            string mimeType = Request.Files[0].ContentType;
+            string fileName = Path.GetFileName(Request.Files[0].FileName);
+            int fileLength = Request.Files[0].ContentLength;
+            if (!(fileName==""||fileLength==0))
+            {
+                Stream fileStream = Request.Files[0].InputStream;
+                byte[] fileData = new byte[fileLength];
+                fileStream.Read(fileData, 0, fileLength);
+                Resource newFile = new Resource
+                {
+                    FileContent = fileData,
+                    MimeType = mimeType,
+                    FileName = fileName,
+                    Description = fileDescription,
+                    CreatedOn = DateTime.Today
+                };
+                db.Resources.Add(newFile);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
 
         // GET: Resources/Details/5
@@ -47,7 +73,7 @@ namespace HospiceWebPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Description,Name,CreatedOn,Data")] Resource resource)
+        public ActionResult Create([Bind(Include = "ID,Description,Name,CreatedOn,FileContent,MimeType,FileName")] Resource resource)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +105,7 @@ namespace HospiceWebPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Description,Name,CreatedOn,Data")] Resource resource)
+        public ActionResult Edit([Bind(Include = "ID,Description,Name,CreatedOn,FileContent,MimeType,FileName")] Resource resource)
         {
             if (ModelState.IsValid)
             {

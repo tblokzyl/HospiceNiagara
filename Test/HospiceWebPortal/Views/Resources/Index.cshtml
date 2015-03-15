@@ -66,15 +66,17 @@
             @*//Kevin: To code inside of main container start here///*@
 
             <p>
-                @Html.ActionLink("Create New Resource", "Create")
+                @using (Html.BeginForm("", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <label for="Description">Description:</label><input type="text" name="fileDescription" /> <br />
+                    <input type="file" name="FileUpload1" /><br />
+                    <input type="submit" name="Submit" id="Submit" value="Upload" />
+                }
             </p>
 
             <div style="margin: 0 10px 0 10px;">
                 <table class="table">
                     <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Name)
-                        </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Description)
                         </th>
@@ -84,15 +86,18 @@
                         <th>
                             @Html.DisplayNameFor(model => model.FileContent)
                         </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MimeType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FileName)
+                        </th>
                         <th></th>
                     </tr>
 
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Description)
                             </td>
@@ -101,6 +106,12 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.FileContent)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MimeType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FileName)
                             </td>
                             <td>
 
