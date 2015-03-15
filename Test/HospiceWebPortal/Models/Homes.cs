@@ -11,19 +11,19 @@ namespace HospiceWebPortal.Models
         public int ID { get; set; }
 
         [Display(Name = "Title")]
-        [StringLength(100, ErrorMessage = "Position name cannot be longer than 100 characters.")]
+        [StringLength(100, ErrorMessage = "Title cannot be longer than 100 characters.")]
         public string Title { get; set; }
 
-        [DataType(DataType.MultilineText)]
         [Display(Name = "Content")]
+        [DataType(DataType.MultilineText)]
         public string Content { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:MMMM dd, yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Created")]
+        [DisplayFormat(DataFormatString = "{0:MMMM dd, yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Created { get; set; }
 
         [Display(Name = "Author")]
-        [StringLength(100, ErrorMessage = "Position name cannot be longer than 100 characters.")]
+        [StringLength(100, ErrorMessage = "Position cannot be longer than 100 characters.")]
         public string Author { get; set; }
     }
 }

@@ -2011,4 +2011,10 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     })
   })
 
+  var app = angular.module('MyPopover', []);
+
+  $(function () {
+      $('button').popover()
+  });
+
 }(window.jQuery);

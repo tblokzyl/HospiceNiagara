@@ -107,6 +107,10 @@ footer {
     margin-top: -3.5%;
 }
 
+.popover{
+    width:1000px;   
+}
+
 @media (max-width: 967px) {
     #sbar-announcements, #sbar-resources, #sbar-events, #sbar-action {
         display:none !important;

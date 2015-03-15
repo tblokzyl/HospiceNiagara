@@ -17,10 +17,27 @@ namespace HospiceWebPortal.Controllers
         private HospiceWebPortalEntities db = new HospiceWebPortalEntities();
 
         // GET: Contacts
-        public ActionResult Index(int page = 1, int pageSize = 3)
+        public ActionResult Index(string sortOrder)
         {
-            List<Contact> contacts = db.Contacts.ToList();
-            PagedList<Contact> model = new PagedList<Contact>(contacts, page, pageSize);
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            var students = from s in db.Contacts
+                           select s;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    students = students.OrderByDescending(s => s.LastName);
+                    break;
+                case "Date":
+                    students = students.OrderBy(s => s.FirstName);
+                    break;
+                case "date_desc":
+                    students = students.OrderByDescending(s => s.FirstName);
+                    break;
+                default:
+                    students = students.OrderBy(s => s.LastName);
+                    break;
+            }
 
             return View(db.Contacts.ToList());
         }
@@ -51,7 +68,7 @@ namespace HospiceWebPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID")] Contact contact)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Position,Phone,EXT")] Contact contact)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +100,7 @@ namespace HospiceWebPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID")] Contact contact)
+        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Position,Phone,EXT")] Contact contact)
         {
             if (ModelState.IsValid)
             {

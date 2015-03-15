@@ -71,10 +71,10 @@
                 <table class="table">
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.FirstName)
+                            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.NameSortParm })
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.LastName)
+                            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm })
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Position)
@@ -98,8 +98,32 @@
                                 @Html.DisplayFor(modelItem => item.LastName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Position)
-                            </td>
+
+                                <div class="bs-example">
+                                    <a href="#" style="text-decoration:none; color:black;" data-trigger="hover" data-toggle="popover" data-html="true" title='<strong>Areas Of Responsibility</strong>' data-content='
+                                        Leadership Team Member<br />
+                                        Finance Lead<br />
+                                        IT Lead<br />
+                                        Facilities Lead<br />
+                                        Administration Lead
+                                        '>@Html.DisplayFor(model => item.Position)</a>
+                                </div>
+
+                                @*////Possible way to implement modals instead of popovers for position descriptions////*@
+
+                                @*<a  data-toggle="modal" href="/Contacts/Index/@item.ID">@Html.DisplayFor(modelitem => item.Position) </a>*@
+
+                                <!-- Large modal -->
+                                @*<button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Position</button>
+
+                                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-@(item.ID)" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            @Html.DisplayFor(model => item.Position)
+                                        </div>
+                                    </div>
+                                </div>*@
+</td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Phone)
                             </td>

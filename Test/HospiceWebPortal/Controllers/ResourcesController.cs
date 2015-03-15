@@ -47,7 +47,7 @@ namespace HospiceWebPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID")] Resource resource)
+        public ActionResult Create([Bind(Include = "ID,Description,Name,CreatedOn,Data")] Resource resource)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace HospiceWebPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID")] Resource resource)
+        public ActionResult Edit([Bind(Include = "ID,Description,Name,CreatedOn,Data")] Resource resource)
         {
             if (ModelState.IsValid)
             {

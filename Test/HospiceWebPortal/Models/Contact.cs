@@ -33,6 +33,10 @@ namespace HospiceWebPortal.Models
         [StringLength(100, ErrorMessage = "Position cannot be more than 100 characters long.")]
         public string Position { get; set; }
 
+        //[Required(ErrorMessage = "You cannot leave the position description blank!")]
+        //[StringLength(500, ErrorMessage = "Position Description be more than 500 characters long.")]
+        //public string Description { get; set; }
+
         //[Required(ErrorMessage = "You cannot leave the phone number blank.")]
         [RegularExpression("^\\d{10}$", ErrorMessage = "The phone number must be exactly 10 numeric digits.")]
         [DataType(DataType.PhoneNumber)]

@@ -47,7 +47,7 @@ namespace HospiceWebPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID")] Meeting meeting)
+        public ActionResult Create([Bind(Include = "ID,Name,Description,Date,Location,Type,RSVP")] Meeting meeting)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace HospiceWebPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID")] Meeting meeting)
+        public ActionResult Edit([Bind(Include = "ID,Name,Description,Date,Location,Type,RSVP")] Meeting meeting)
         {
             if (ModelState.IsValid)
             {

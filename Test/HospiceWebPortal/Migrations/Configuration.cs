@@ -155,28 +155,63 @@ using System.Text;
                     EXT = 238
                 }
             };
-            contacts.ForEach(d => context.Contacts.AddOrUpdate(n => n.ID, d));
-    try
-    {
-        context.SaveChanges();
-    }
-    catch (DbEntityValidationException ex)
-    {
-        var sb = new StringBuilder();
-        foreach (var failure in ex.EntityValidationErrors)
-        {
-            sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
-            foreach (var error in failure.ValidationErrors)
+            contacts.ForEach(d => context.Contacts.AddOrUpdate(n => n.EXT, d));
+            try
             {
-                sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
-                sb.AppendLine();
+                context.SaveChanges();
             }
-        }
-        throw new DbEntityValidationException(
-            "Entity Validation Failed - errors follow:\n" +
-            sb.ToString(), ex
-        );
-    }
+            catch (DbEntityValidationException ex)
+            {
+                var sb = new StringBuilder();
+                foreach (var failure in ex.EntityValidationErrors)
+                {
+                    sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+                    foreach (var error in failure.ValidationErrors)
+                    {
+                        sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                        sb.AppendLine();
+                    }
+                }
+                throw new DbEntityValidationException(
+                    "Entity Validation Failed - errors follow:\n" +
+                    sb.ToString(), ex
+                );
+            }
+
+            var meetings = new List<Meeting>
+            {
+                new Meeting
+                {
+                    Name = "Prototype II",
+                    Description = "Meet with Jessica, Dave, and Peter to discuss progress.",
+                    Date = DateTime.Parse("2015-03-16"), 
+                    Location = "Niagara College Rm. S306",
+                    Type = "Off-Site",
+                    RSVP = "Yes"
+                }
+            };
+            meetings.ForEach(d => context.Meetings.AddOrUpdate(n => n.ID, d));
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var sb = new StringBuilder();
+                foreach (var failure in ex.EntityValidationErrors)
+                {
+                    sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+                    foreach (var error in failure.ValidationErrors)
+                    {
+                        sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                        sb.AppendLine();
+                    }
+                }
+                throw new DbEntityValidationException(
+                    "Entity Validation Failed - errors follow:\n" +
+                    sb.ToString(), ex
+                );
+            }
 
             ////Role Manager
             //var roleManager = new RoleManager<IdentityRole>(new
