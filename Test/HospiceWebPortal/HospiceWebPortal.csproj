@@ -204,9 +204,9 @@
     <Compile Include="Migrations\201503142330427_data.Designer.cs">
       <DependentUpon>201503142330427_data.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201503150507085_remove_model_changes.cs" />
-    <Compile Include="Migrations\201503150507085_remove_model_changes.Designer.cs">
-      <DependentUpon>201503150507085_remove_model_changes.cs</DependentUpon>
+    <Compile Include="Migrations\201503151843272_resource_update.cs" />
+    <Compile Include="Migrations\201503151843272_resource_update.Designer.cs">
+      <DependentUpon>201503151843272_resource_update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -380,8 +380,8 @@
     <EmbeddedResource Include="Migrations\201503142330427_data.resx">
       <DependentUpon>201503142330427_data.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503150507085_remove_model_changes.resx">
-      <DependentUpon>201503150507085_remove_model_changes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201503151843272_resource_update.resx">
+      <DependentUpon>201503151843272_resource_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

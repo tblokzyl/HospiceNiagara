@@ -7,13 +7,13 @@ namespace HospiceWebPortal.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class remove_model_changes : IMigrationMetadata
+    public sealed partial class resource_update : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(remove_model_changes));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(resource_update));
         
         string IMigrationMetadata.Id
         {
-            get { return "201503150507085_remove_model_changes"; }
+            get { return "201503151843272_resource_update"; }
         }
         
         string IMigrationMetadata.Source
