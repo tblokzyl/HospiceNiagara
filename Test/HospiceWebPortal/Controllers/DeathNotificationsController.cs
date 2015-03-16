@@ -8,152 +8,150 @@ using System.Web;
 using System.Web.Mvc;
 using HospiceWebPortal.DAL;
 using HospiceWebPortal.Models;
-using PagedList;
 
 namespace HospiceWebPortal.Controllers
 {
-    public class ContactsController : Controller
+    public class DeathNotificationsController : Controller
     {
         private HospiceWebPortalEntities db = new HospiceWebPortalEntities();
 
-        // GET: Contacts
+        // GET: DeathNotifications
         public ActionResult Index(string sortOrder, string searchString)
         {
             ////Steph Change Start
-            ViewBag.FNameSortParm = sortOrder == "FName" ? "fname_desc" : "FName";
+            ViewBag.NameSortParm = sortOrder == "Name" ? "Name_desc" : "Name";
             ////Steph Change End
-            ViewBag.LNameSortParm = sortOrder == "LName" ? "lname_desc" : "LName";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "Date_desc" : "Date";
             ////Steph Change Start
-            ViewBag.PositionSortParm = sortOrder == "Position" ? "Position_desc" : "Position";
+            ViewBag.LocationSortParm = sortOrder == "Location" ? "Location_desc" : "Location";
             ////Steph Change End
-            var contacts = from s in db.Contacts
+            var deathnot = from s in db.DeathNotifications
                            select s;
                 if (!String.IsNullOrEmpty(searchString))
                 {
-                    contacts = contacts.Where(s => s.LastName.Contains(searchString)
-                                           || s.FirstName.Contains(searchString) || s.Position.Contains(searchString));
+                    deathnot = deathnot.Where(s => s.Name.Contains(searchString)
+                                            || s.Location.Contains(searchString));
                 }
                 switch (sortOrder)
                 {
                     //Steph Changes Start
-                    case "FName":
-                        contacts = contacts.OrderBy(s => s.FirstName);
+                    case "Name":
+                        deathnot = deathnot.OrderBy(s => s.Name);
                         break;
-                    case "fname_desc":
-                        contacts = contacts.OrderByDescending(s => s.FirstName);
+                    case "Name_desc":
+                        deathnot = deathnot.OrderByDescending(s => s.Name);
                         break;
-                    case "LName":
-                        contacts = contacts.OrderBy(s => s.LastName);
+                    case "Date":
+                        deathnot = deathnot.OrderBy(s => s.Date);
                         break;
-                    case "lname_desc":
-                        contacts = contacts.OrderByDescending(s => s.LastName);
+                    case "Date_desc":
+                        deathnot = deathnot.OrderByDescending(s => s.Date);
                         break;
-                    case "Position":
-                        contacts = contacts.OrderBy(s => s.Position);
+                    case "Location":
+                        deathnot = deathnot.OrderBy(s => s.Location);
                         break;
-                    case "Position_desc":
-                        contacts = contacts.OrderByDescending(s => s.Position);
+                    case "Location_desc":
+                        deathnot = deathnot.OrderByDescending(s => s.Location);
                         break;
                     //Steph Changes End
                     default:
-                        contacts = contacts.OrderBy(s => s.FirstName);
+                        deathnot = deathnot.OrderBy(s => s.Name);
                         break;
                 }
-
-            return View(contacts.ToList());
+                return View(deathnot.ToList());
         }
 
-        // GET: Contacts/Details/5
+        // GET: DeathNotifications/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
+            DeathNotification deathNotification = db.DeathNotifications.Find(id);
+            if (deathNotification == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(deathNotification);
         }
 
-        // GET: Contacts/Create
+        // GET: DeathNotifications/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Contacts/Create
+        // POST: DeathNotifications/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Position,Phone,EXT")] Contact contact)
+        public ActionResult Create([Bind(Include = "ID,Name,Date,Location,Notes")] DeathNotification deathNotification)
         {
             if (ModelState.IsValid)
             {
-                db.Contacts.Add(contact);
+                db.DeathNotifications.Add(deathNotification);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(contact);
+            return View(deathNotification);
         }
 
-        // GET: Contacts/Edit/5
+        // GET: DeathNotifications/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
+            DeathNotification deathNotification = db.DeathNotifications.Find(id);
+            if (deathNotification == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(deathNotification);
         }
 
-        // POST: Contacts/Edit/5
+        // POST: DeathNotifications/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Position,Phone,EXT")] Contact contact)
+        public ActionResult Edit([Bind(Include = "ID,Name,Date,Location,Notes")] DeathNotification deathNotification)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(contact).State = EntityState.Modified;
+                db.Entry(deathNotification).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(contact);
+            return View(deathNotification);
         }
 
-        // GET: Contacts/Delete/5
+        // GET: DeathNotifications/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
+            DeathNotification deathNotification = db.DeathNotifications.Find(id);
+            if (deathNotification == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(deathNotification);
         }
 
-        // POST: Contacts/Delete/5
+        // POST: DeathNotifications/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Contact contact = db.Contacts.Find(id);
-            db.Contacts.Remove(contact);
+            DeathNotification deathNotification = db.DeathNotifications.Find(id);
+            db.DeathNotifications.Remove(deathNotification);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -28,7 +28,18 @@
         <div class="gray-content">
             <h2 class="green-header">Announcements</h2>
             <p style="text-align:left; padding: 0 15px 0 20px">
-                <strong>What Is Lorem Ipsum?</strong><br> Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br><br> <strong>Why Do We Use It?</strong><br> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <br><br> <strong>Where can I get some?</strong><br> It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                @{int i = 0;}
+                @foreach (var item in Model)
+                {
+                    <strong>@Html.DisplayFor(modelItem => item.Created)</strong><br />
+                    if (i == 2)
+                    {
+                        break;
+                    }
+                    i++;
+                }
+                
+                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br><br> <strong>Why Do We Use It?</strong><br> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <br><br> <strong>Where can I get some?</strong><br> It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
             </p>
         </div>
         <div class="gray-content">

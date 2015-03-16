@@ -24,5 +24,7 @@ namespace HospiceWebPortal.DAL
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
 
+        public System.Data.Entity.DbSet<HospiceWebPortal.Models.DeathNotification> DeathNotifications { get; set; }
+
     }
 }

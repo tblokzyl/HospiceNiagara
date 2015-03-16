@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HospiceWebPortal.Models.Contact>
+﻿@model IEnumerable<HospiceWebPortal.Models.DeathNotification>
 
 @{
     ViewBag.Title = "Index";
@@ -35,20 +35,20 @@
             <h2 class="green-header">Announcements</h2>
 
             <p style="text-align:left; padding: 0 15px 0 20px">
-            @*@{int i = 0;}
-            @foreach (var item in Model)
-            {
-                <strong>@Html.DisplayFor(modelItem => item.FirstName)</strong><br />
-                if (i == 2)
-                {
-                    break;
-                }
-                i++;
-            }*@
+                @*@{int i = 0;}
+                    @foreach (var item in Model)
+                    {
+                        <strong>@Html.DisplayFor(modelItem => item.FirstName)</strong><br />
+                        if (i == 2)
+                        {
+                            break;
+                        }
+                        i++;
+                    }*@
                 @*@for (i=0; i<3; i++; var item in Model)
-                {
-                    <strong>@Html.DisplayFor(modelItem => item.FirstName)</strong><br>
-                }*@
+                    {
+                        <strong>@Html.DisplayFor(modelItem => item.FirstName)</strong><br>
+                    }*@
                 <strong>Why Do We Use It?</strong><br>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br><br> <strong>Why Do We Use It?</strong><br>
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                 It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <br><br> <strong>Where can I get some?</strong><br>
@@ -74,13 +74,13 @@
     </div>
     <div class="col-md-8">
         <div class="gray-content">
-            
-                <h2 class="green-header">Staff Contact Information</h2>
+
+            <h2 class="green-header">Death Notifications</h2>
 
 
             @using (Html.BeginForm())
             {
-                                <p>
+                <p>
                     @Html.ActionLink("Create New Contact", "Create")
                 </p>
                 
@@ -94,19 +94,16 @@
                 <table class="table">
                     <tr>
                         <th>
-                            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FNameSortParm })
+                            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
                         </th>
                         <th>
-                            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LNameSortParm })
+                            @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm })
                         </th>
                         <th>
-                            @Html.ActionLink("Position", "Index", new { sortOrder = ViewBag.PositionSortParm }) @*Steph Change*@
+                            @Html.ActionLink("Location", "Index", new { sortOrder = ViewBag.LocationSortParm }) @*Steph Change*@
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Phone)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.EXT)
+                            @Html.DisplayNameFor(model => model.Notes)
                         </th>
                         <th></th>
                     </tr>
@@ -115,34 +112,16 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.FirstName)
+                                @Html.DisplayFor(modelItem => item.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.LastName)
+                                @Html.DisplayFor(modelItem => item.Date)
                             </td>
                             <td>
-
-                                <div class="bs-example">
-                                    <a href="#" style="text-decoration:none; color:black;" data-trigger="hover" data-toggle="popover" data-html="true" title='<strong>Areas Of Responsibility</strong>' data-content='
-                                        Leadership Team Member<br />
-                                        Finance Lead<br />
-                                        IT Lead<br />
-                                        Facilities Lead<br />
-                                        Administration Lead
-                                        '>@Html.DisplayFor(model => item.Position)</a>
-                                </div>
-
-                                @*////Possible way to implement modals instead of popovers for position descriptions////*@
-
-                                @*<a  data-toggle="modal" href="/Contacts/Index/@item.ID">@Html.DisplayFor(modelitem => item.Position) </a>*@
-
-
+                                @Html.DisplayFor(modelItem => item.Location)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Phone)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.EXT)
+                                @Html.DisplayFor(modelItem => item.Notes)
                             </td>
                             <td>
 
@@ -154,23 +133,10 @@
                                     <i class="glyphicon glyphicon-pencil"></i>
                                     <span class="sr-only" style="text-align:right;">Edit</span>
                                 </a>
-
-                                @*////This will add a details view if neccessary////*@
-                                @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
                             </td>
                         </tr>
                     }
                 </table>
-                <!-- Large modal -->
-                @*<button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Position</button>
-
-                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            ...
-                        </div>
-                    </div>
-                </div>*@
             </div>
         </div>
     </div>

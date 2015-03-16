@@ -6,24 +6,24 @@ using System.Web;
 
 namespace HospiceWebPortal.Models
 {
-    public class Home
+    public class DeathNotification
     {
         public int ID { get; set; }
 
-        [Display(Name = "Title")]
+        [Display(Name = "Name")]
         [StringLength(100, ErrorMessage = "Title cannot be longer than 100 characters.")]
-        public string Title { get; set; }
+        public string Name { get; set; }
 
-        [Display(Name = "Content")]
-        [DataType(DataType.MultilineText)]
-        public string Content { get; set; }
-
-        [Display(Name = "Created")]
+        [Display(Name = "Date")]
         [DisplayFormat(DataFormatString = "{0:MMMM dd, yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime Created { get; set; }
+        public DateTime Date { get; set; }
 
-        [Display(Name = "Author")]
+        [Display(Name = "Location")]
         [StringLength(100, ErrorMessage = "Position cannot be longer than 100 characters.")]
-        public string Author { get; set; }
+        public string Location { get; set; }
+
+        [Display(Name = "Notes")]
+        [DataType(DataType.MultilineText)]
+        public string Notes { get; set; }
     }
 }

@@ -168,6 +168,7 @@
     <Compile Include="Controllers\AdminsController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\DeathNotificationsController.cs" />
     <Compile Include="Controllers\HomesController.cs" />
     <Compile Include="Controllers\MeetingsController.cs" />
     <Compile Include="Controllers\ResourcesController.cs" />
@@ -212,15 +213,20 @@
     <Compile Include="Migrations\201503152004315_resource_fix.Designer.cs">
       <DependentUpon>201503152004315_resource_fix.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201503160306476_fixed_resource_validation.cs" />
-    <Compile Include="Migrations\201503160306476_fixed_resource_validation.Designer.cs">
-      <DependentUpon>201503160306476_fixed_resource_validation.cs</DependentUpon>
+    <Compile Include="Migrations\201503152113030_virtual-collection.cs" />
+    <Compile Include="Migrations\201503152113030_virtual-collection.Designer.cs">
+      <DependentUpon>201503152113030_virtual-collection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503160229523_death-notification.cs" />
+    <Compile Include="Migrations\201503160229523_death-notification.Designer.cs">
+      <DependentUpon>201503160229523_death-notification.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\DeathNotification.cs" />
     <Compile Include="Models\Homes.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Meeting.cs" />
@@ -354,6 +360,11 @@
     <Content Include="Views\Resources\Details.cshtml" />
     <Content Include="Views\Resources\Edit.cshtml" />
     <Content Include="Views\Resources\Index.cshtml" />
+    <Content Include="Views\DeathNotifications\Create.cshtml" />
+    <Content Include="Views\DeathNotifications\Delete.cshtml" />
+    <Content Include="Views\DeathNotifications\Details.cshtml" />
+    <Content Include="Views\DeathNotifications\Edit.cshtml" />
+    <Content Include="Views\DeathNotifications\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -394,8 +405,11 @@
     <EmbeddedResource Include="Migrations\201503152004315_resource_fix.resx">
       <DependentUpon>201503152004315_resource_fix.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503160306476_fixed_resource_validation.resx">
-      <DependentUpon>201503160306476_fixed_resource_validation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201503152113030_virtual-collection.resx">
+      <DependentUpon>201503152113030_virtual-collection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503160229523_death-notification.resx">
+      <DependentUpon>201503160229523_death-notification.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
