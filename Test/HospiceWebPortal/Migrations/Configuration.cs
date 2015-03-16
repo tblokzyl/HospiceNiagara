@@ -1,15 +1,16 @@
 namespace HospiceWebPortal.Migrations
 {
     using HospiceWebPortal.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Migrations;
-using System.Data.Entity.Validation;
-using System.Linq;
-using System.Text;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Data.Entity.Validation;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
 
     internal sealed class Configuration : DbMigrationsConfiguration<HospiceWebPortal.DAL.HospiceWebPortalEntities>
     {
@@ -263,7 +264,7 @@ using System.Text;
                     RSVP = "Yes"
                 }
             };
-            meetings.ForEach(d => context.Meetings.AddOrUpdate(n => n.ID, d));
+            meetings.ForEach(d => context.Meetings.AddOrUpdate(n => n.Name, d));
             try
             {
                 context.SaveChanges();
@@ -321,6 +322,19 @@ using System.Text;
                 },
             };
             deaths.ForEach(d => context.DeathNotifications.AddOrUpdate(n => n.Name, d));
+            context.SaveChanges();
+
+            var resources = new List<Resource>
+            {
+                new Resource 
+                {
+                    Description = "Hospice Niagara Portal Project Plan",
+                    FileName = "HNPortalProjectPlan.pdf",
+                    CreatedOn = DateTime.Parse("2014-12-16"),
+                    FileContent = File.ReadAllBytes("~/Images/HNPortalProjectPlan.pdf")
+                }
+            };
+            resources.ForEach(d => context.Resources.AddOrUpdate(n => n.FileName, d));
             context.SaveChanges();
 
             ////Role Manager

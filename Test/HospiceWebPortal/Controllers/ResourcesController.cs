@@ -17,9 +17,43 @@ namespace HospiceWebPortal.Controllers
         private HospiceWebPortalEntities db = new HospiceWebPortalEntities();
 
         // GET: Resources
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            return View(db.Resources.ToList());
+            ViewBag.DescriptionSortParm = sortOrder == "Description" ? "Description_desc" : "Description";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "Date_desc" : "Date";
+            ViewBag.FileNameSortParm = sortOrder == "FileName" ? "FileName_desc" : "FileName";
+            var resources = from s in db.Resources
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                resources = resources.Where(s => s.Description.Contains(searchString)
+                                        || s.FileName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "Description":
+                    resources = resources.OrderBy(s => s.Description);
+                    break;
+                case "Description_desc":
+                    resources = resources.OrderByDescending(s => s.Description);
+                    break;
+                case "Date":
+                    resources = resources.OrderBy(s => s.CreatedOn);
+                    break;
+                case "Date_desc":
+                    resources = resources.OrderByDescending(s => s.CreatedOn);
+                    break;
+                case "FileName":
+                    resources = resources.OrderBy(s => s.FileName);
+                    break;
+                case "FileName_desc":
+                    resources = resources.OrderByDescending(s => s.FileName);
+                    break;
+                default:
+                    resources = resources.OrderByDescending(s => s.Description);
+                    break;
+            }
+            return View(resources.ToList());
         }
 
         public FileContentResult Download(int id)

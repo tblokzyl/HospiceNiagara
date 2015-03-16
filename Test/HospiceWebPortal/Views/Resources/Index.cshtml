@@ -54,14 +54,23 @@
                 <a href="#">Incident Report</a><br>
                 <a href="#">Mileage & Expense</a><br>
                 <a href="#">Volunteer Ticket Seller Information Sheet</a><br>
-
             </p>
         </div>
     </div>
     <div class="col-md-8">
-        <div class="gray-content">
-
-            <h2 class="green-header">Resources</h2>
+        <div class="gray-content" style="margin-top:20px;">
+            <div class=" green-header pull-right">
+            <form class="navbar-form" role="search" style=" margin:0 -10px 0 -15px;">
+                <div class="input-group">
+                    <h2 style="display:inline;">Resources</h2>
+                    <input type="text" class="form-control pull-right" placeholder="Search" name="searchString">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" style="padding:7px 7px 6px 7px;" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        <button class="btn btn-default" style="padding:7px 7px 6px 7px;">@Html.ActionLink(" ", "Index")<i class="glyphicon glyphicon-remove"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
             @*//Kevin: To code inside of main container start here///*@
 
@@ -69,21 +78,21 @@
             <p>
                 @using (Html.BeginForm("", "Resources", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-                    <input type="text" placeholder="File Description" class="form-control" name="fileDescription" /> <br />
-                <input type="file" class="upload" name="FileUpload1" /><br />
-                    <input class="btn btn-default" type="submit" name="Submit" id="Submit" value="Upload" />
+                    <input style="padding-top:15px;" type="file" class="upload" name="FileUpload1" /><br />
+                    <input style="display:inline;" type="text" placeholder="File Description" class="form-control" name="fileDescription" /><input class="btn btn-default" type="submit" name="Submit" id="Submit" value="Upload" /> <br />
                 }
             </p>
+
                 <table class="table">
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.Description)
+                            @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.DescriptionSortParm })
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.CreatedOn)
+                            @Html.ActionLink("Created On", "Index", new { sortOrder = ViewBag.DateSortParm })
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.FileName)
+                            @Html.ActionLink("File Name", "Index", new { sortOrder = ViewBag.FileNameSortParm })
                         </th>
                         <th></th>
                     </tr>
@@ -102,14 +111,18 @@
                             </td>
                             <td>
 
-                                @Html.ActionLink("Download","Download", new {id = item.ID}) 
-                                <a href="@Url.Action("Delete", new { id = item.ID })" style="font-size:1em; color:black; padding-left:5px; float:right;">
+                                <a href="@Url.Action("Delete", new { id = item.ID })" style="font-size:1.2em; color:black; padding-left:5px; float:right;">
                                     <i class="glyphicon glyphicon-trash"></i>
                                     <span class="sr-only" style="text-align:right;">Delete</span>
                                 </a>
-                                <a href="@Url.Action("Edit", new { id = item.ID })" style="font-size:1em; color:black; float:right;">
+                                <a href="@Url.Action("Edit", new { id = item.ID })" style="font-size:1.2em; color:black; padding-left:5px; float:right;">
                                     <i class="glyphicon glyphicon-pencil"></i>
                                     <span class="sr-only" style="text-align:right;">Edit</span>
+                                </a>
+
+                                <a href="@Url.Action("Download", new { id = item.ID })" style="font-size:1.2em; color:black; float:right;">
+                                    <i class="glyphicon glyphicon-download"></i>
+                                    <span class="sr-only" style="text-align:right;">Download</span>
                                 </a>
 
                                 @*////This will add a details view if neccessary////*@
