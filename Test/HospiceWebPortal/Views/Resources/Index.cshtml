@@ -66,7 +66,7 @@
             @*//Kevin: To code inside of main container start here///*@
 
             <p>
-                @using (Html.BeginForm("", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                @using (Html.BeginForm("", "Resources", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <label for="Description">Description:</label><input type="text" name="fileDescription" /> <br />
                     <input type="file" name="FileUpload1" /><br />
@@ -84,12 +84,6 @@
                             @Html.DisplayNameFor(model => model.CreatedOn)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.FileContent)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.MimeType)
-                        </th>
-                        <th>
                             @Html.DisplayNameFor(model => model.FileName)
                         </th>
                         <th></th>
@@ -103,12 +97,6 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.CreatedOn)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FileContent)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MimeType)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.FileName)
