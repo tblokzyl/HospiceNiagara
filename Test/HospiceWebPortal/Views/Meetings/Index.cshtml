@@ -20,14 +20,17 @@
         @*/////Events//////*@
         <div class="gray-content">
             <h2 class="green-header">Events</h2>
-            <p>
-                <b>January 25, 2015</b> Wavelength<br />
-                Discuss hospice niagara web portal.
-            </p>
-            <p>
-                <b>January 26, 2015</b> Timothy Blokzyl<br />
-                Discuss progress with Dave and Peter.
-            </p>
+                @{int i = 0;}
+                @foreach (var item in Model)
+                {
+                    <p><strong>@Html.DisplayFor(modelItem => item.Name)</strong> &nbsp; <i>@Html.DisplayFor(modelItem => item.Date)</i><br />
+                    @item.Description.Substring(0, Math.Min(item.Description.Length, 125))<br /></p>
+                    if (i == 2)
+                    {
+                        break;
+                    }
+                    i++;
+                }
         </div>
         @*/////Sidebar Announcements//////*@
         <div class="gray-content">

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HospiceWebPortal.Models.Resource>
+﻿@model IEnumerable<HospiceWebPortal.Models.DeathNotification>
 
 @{
     ViewBag.Title = "Index";
@@ -35,7 +35,21 @@
             <h2 class="green-header">Announcements</h2>
 
             <p style="text-align:left; padding: 0 15px 0 20px">
-                <strong>What Is Lorem Ipsum?</strong><br> Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br><br> <strong>Why Do We Use It?</strong><br>
+                @*@{int i = 0;}
+                    @foreach (var item in Model)
+                    {
+                        <strong>@Html.DisplayFor(modelItem => item.FirstName)</strong><br />
+                        if (i == 2)
+                        {
+                            break;
+                        }
+                        i++;
+                    }*@
+                @*@for (i=0; i<3; i++; var item in Model)
+                    {
+                        <strong>@Html.DisplayFor(modelItem => item.FirstName)</strong><br>
+                    }*@
+                <strong>Why Do We Use It?</strong><br>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br><br> <strong>Why Do We Use It?</strong><br>
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                 It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <br><br> <strong>Where can I get some?</strong><br>
                 It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
@@ -61,35 +75,35 @@
     <div class="col-md-8">
         <div class="gray-content">
 
-            <h2 class="green-header">Resources</h2>
+            <h2 class="green-header">Death Notifications</h2>
 
-            @*//Kevin: To code inside of main container start here///*@
 
-            <div style="margin: 0 10px 0 10px;">
+            @using (Html.BeginForm())
+            {
                 <p>
-                    @using (Html.BeginForm("", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                    {
-                        <label style="line-height:2em;" for="Description">Description:</label><input type="text" name="fileDescription" /> <br />
-                        <input type="file" name="FileUpload1" /><br />
-                        <input type="submit" name="Submit" id="Submit" value="Upload" />
-                    }
+                    @Html.ActionLink("Create New Contact", "Create")
                 </p>
+                
+                <p style="white-space:nowrap;">
+                    @Html.TextBox("SearchString", null, new { @class = "form-control" })
+                    <input type="submit" class="btn btn-default" value="Search" /> @Html.ActionLink("Clear", "Index")
+                </p>
+            }
+
+            <div class="contact-content" style="margin: 0 10px 0 10px;">
                 <table class="table">
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.Description)
+                            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.CreatedOn)
+                            @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm })
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.FileContent)
+                            @Html.ActionLink("Location", "Index", new { sortOrder = ViewBag.LocationSortParm }) @*Steph Change*@
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.MimeType)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.FileName)
+                            @Html.DisplayNameFor(model => model.Notes)
                         </th>
                         <th></th>
                     </tr>
@@ -98,19 +112,16 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Description)
+                                @Html.DisplayFor(modelItem => item.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.CreatedOn)
+                                @Html.DisplayFor(modelItem => item.Date)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.FileContent)
+                                @Html.DisplayFor(modelItem => item.Location)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.MimeType)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FileName)
+                                @Html.DisplayFor(modelItem => item.Notes)
                             </td>
                             <td>
 
@@ -122,9 +133,6 @@
                                     <i class="glyphicon glyphicon-pencil"></i>
                                     <span class="sr-only" style="text-align:right;">Edit</span>
                                 </a>
-
-                                @*////This will add a details view if neccessary////*@
-                                @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
                             </td>
                         </tr>
                     }

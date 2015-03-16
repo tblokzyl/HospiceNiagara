@@ -29,5 +29,9 @@ namespace HospiceWebPortal.Models
         
         [Display(Name = "Attending")]
         public string RSVP { get; set; }
+
+        public virtual ICollection<Announcement> Announcements { get; set; }
+
+        public virtual ICollection<Resource> Resources { get; set; }
     }
 }

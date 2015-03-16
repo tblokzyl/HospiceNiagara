@@ -25,5 +25,7 @@ namespace HospiceWebPortal.Models
         [Display(Name = "Author")]
         [StringLength(100, ErrorMessage = "Position cannot be longer than 100 characters.")]
         public string Author { get; set; }
+
+        public virtual ICollection<Resource> Resources { get; set; }
     }
 }

@@ -35,7 +35,21 @@
             <h2 class="green-header">Announcements</h2>
 
             <p style="text-align:left; padding: 0 15px 0 20px">
-                <strong>What Is Lorem Ipsum?</strong><br> Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br><br> <strong>Why Do We Use It?</strong><br>
+            @*@{int i = 0;}
+            @foreach (var item in Model)
+            {
+                <strong>@Html.DisplayFor(modelItem => item.FirstName)</strong><br />
+                if (i == 2)
+                {
+                    break;
+                }
+                i++;
+            }*@
+                @*@for (i=0; i<3; i++; var item in Model)
+                {
+                    <strong>@Html.DisplayFor(modelItem => item.FirstName)</strong><br>
+                }*@
+                <strong>Why Do We Use It?</strong><br>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br><br> <strong>Why Do We Use It?</strong><br>
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                 It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <br><br> <strong>Where can I get some?</strong><br>
                 It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
@@ -63,15 +77,16 @@
             
                 <h2 class="green-header">Staff Contact Information</h2>
 
-                <p>
-                    @Html.ActionLink("Create New Contact", "Create")
-                </p>
 
             @using (Html.BeginForm())
             {
-                <p>
-                    Find by name: @Html.TextBox("SearchString")
-                    <input type="submit" value="Search" />
+                                <p>
+                    @Html.ActionLink("Create New Contact", "Create")
+                </p>
+                
+                <p style="white-space:nowrap;">
+                    @Html.TextBox("SearchString", null, new { @class = "form-control" })
+                    <input type="submit" class="btn btn-default" value="Search" /> @Html.ActionLink("Clear", "Index")
                 </p>
             }
 
@@ -85,7 +100,7 @@
                             @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LNameSortParm })
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Position)
+                            @Html.ActionLink("Position", "Index", new { sortOrder = ViewBag.PositionSortParm }) @*Steph Change*@
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Phone)
@@ -121,17 +136,8 @@
 
                                 @*<a  data-toggle="modal" href="/Contacts/Index/@item.ID">@Html.DisplayFor(modelitem => item.Position) </a>*@
 
-                                <!-- Large modal -->
-                                @*<button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Position</button>
 
-                                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-@(item.ID)" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            @Html.DisplayFor(model => item.Position)
-                                        </div>
-                                    </div>
-                                </div>*@
-</td>
+                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Phone)
                             </td>
@@ -155,6 +161,16 @@
                         </tr>
                     }
                 </table>
+                <!-- Large modal -->
+                @*<button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Position</button>
+
+                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            ...
+                        </div>
+                    </div>
+                </div>*@
             </div>
         </div>
     </div>
