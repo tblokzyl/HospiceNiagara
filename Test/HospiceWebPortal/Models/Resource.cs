@@ -9,6 +9,8 @@ namespace HospiceWebPortal.Models
     public class Resource
     {
         public int ID { get; set; }
+        [Required(ErrorMessage="Please add a description")]
+        [StringLength(100,ErrorMessage="No longer than 100 characters please!")]
         public string Description { get; set; }
         [Required(ErrorMessage = "You cannot leave the name of the file blank.")]
         [StringLength(100, ErrorMessage = "The name of the file cannot be more than 100 characters")]
@@ -24,6 +26,8 @@ namespace HospiceWebPortal.Models
     public class ResourceViewModel
     {
         public int ID { get; set; }
+        [Required(ErrorMessage = "Please add a description")]
+        [StringLength(100, ErrorMessage = "No longer than 100 characters please!")]
         public string Description { get; set; }
         [Required(ErrorMessage = "You cannot leave the name of the file blank.")]
         [StringLength(100, ErrorMessage = "The name of the file cannot be more than 100 characters")]
