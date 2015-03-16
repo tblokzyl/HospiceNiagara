@@ -103,6 +103,7 @@
                             </td>
                             <td>
 
+                                @Html.ActionLink("Download","Download", new {id = item.ID}) 
                                 <a href="@Url.Action("Delete", new { id = item.ID })" style="font-size:1em; color:black; padding-left:5px; float:right;">
                                     <i class="glyphicon glyphicon-trash"></i>
                                     <span class="sr-only" style="text-align:right;">Delete</span>

@@ -22,6 +22,12 @@ namespace HospiceWebPortal.Controllers
             return View(db.Resources.ToList());
         }
 
+        public FileContentResult Download(int id)
+        {
+            var theFile = db.Resources.Where(f => f.ID == id).SingleOrDefault();
+            return File(theFile.FileContent, theFile.MimeType, theFile.FileName);
+        }
+
         [HttpPost]
         public ActionResult Index(string fileDescription)
         {
@@ -73,7 +79,7 @@ namespace HospiceWebPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Description,Name,CreatedOn,FileContent,MimeType,FileName")] Resource resource)
+        public ActionResult Create([Bind(Include = "ID,Description,CreatedOn,FileContent,MimeType,FileName")] Resource resource)
         {
             if (ModelState.IsValid)
             {
@@ -100,15 +106,19 @@ namespace HospiceWebPortal.Controllers
             return View(resource);
         }
 
+        
+
         // POST: Resources/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Description,Name,CreatedOn,FileContent,MimeType,FileName")] Resource resource)
+        public ActionResult Edit([Bind(Include = "ID,Description,CreatedOn,FileContent,MimeType,FileName")] Resource resource)
         {
+            Console.Write("Here1");
             if (ModelState.IsValid)
             {
+                Console.Write("Here2");
                 db.Entry(resource).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
