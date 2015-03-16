@@ -55,7 +55,7 @@ namespace HospiceWebPortal.Controllers
                         break;
                     //Steph Changes End
                     default:
-                        deathnot = deathnot.OrderBy(s => s.Name);
+                        deathnot = deathnot.OrderByDescending(s => s.Date);
                         break;
                 }
                 return View(deathnot.ToList());

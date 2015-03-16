@@ -65,16 +65,15 @@
 
             @*//Kevin: To code inside of main container start here///*@
 
+            <div style="margin: 0 10px 0 10px;">
             <p>
                 @using (Html.BeginForm("", "Resources", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-                    <label for="Description">Description:</label><input type="text" name="fileDescription" /> <br />
-                    <input type="file" name="FileUpload1" /><br />
-                    <input type="submit" name="Submit" id="Submit" value="Upload" />
+                    <input type="text" placeholder="File Description" class="form-control" name="fileDescription" /> <br />
+                <input type="file" class="upload" name="FileUpload1" /><br />
+                    <input class="btn btn-default" type="submit" name="Submit" id="Submit" value="Upload" />
                 }
             </p>
-
-            <div style="margin: 0 10px 0 10px;">
                 <table class="table">
                     <tr>
                         <th>

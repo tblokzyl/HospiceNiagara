@@ -81,7 +81,7 @@
             @using (Html.BeginForm())
             {
                 <p>
-                    @Html.ActionLink("Create New Contact", "Create")
+                    @Html.ActionLink("Create Death Notification", "Create")
                 </p>
                 
                 <p style="white-space:nowrap;">
@@ -100,7 +100,7 @@
                             @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm })
                         </th>
                         <th>
-                            @Html.ActionLink("Location", "Index", new { sortOrder = ViewBag.LocationSortParm }) @*Steph Change*@
+                            @Html.ActionLink("Location", "Index", new { sortOrder = ViewBag.LocationSortParm })
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Notes)

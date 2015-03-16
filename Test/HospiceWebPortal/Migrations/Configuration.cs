@@ -153,6 +153,79 @@ using System.Text;
                     LastName = "Estabrooks",
                     Position = "Finance and Operations Manager",
                     EXT = 238
+                },
+                new Contact 
+                { 
+                    FirstName = "Jim",
+                    LastName = "Horsthuis",
+                    Position = "Community Programs Manager",
+                    Phone = 9053216948,
+                    EXT = 229
+                },
+                new Contact 
+                { 
+                    FirstName = "Kate",
+                    LastName = "Murrell",
+                    Position = "Administrative Assistant",
+                    EXT = 222
+                },
+                new Contact 
+                { 
+                    FirstName = "Kelly",
+                    LastName = "Vlaar",
+                    Position = "Human Resources, Quality Improvement Manager",
+                    EXT = 269
+                },
+                new Contact 
+                { 
+                    FirstName = "Patrick",
+                    LastName = "Engel",
+                    Position = "Chef",
+                    EXT = 241
+                },
+                new Contact 
+                { 
+                    FirstName = "Laurie",
+                    LastName = "Straw",
+                    Position = "Director of Care",
+                    Phone = 9056585867,
+                    EXT = 247
+                },
+                new Contact 
+                { 
+                    FirstName = "Margie",
+                    LastName = "Reid",
+                    Position = "Coordinator of Volunteer Development",
+                    EXT = 224
+                },
+                new Contact 
+                { 
+                    FirstName = "Marnie",
+                    LastName = "Engel",
+                    Position = "Community Programs Volunteer Coordinator",
+                    EXT = 228
+                },
+                new Contact 
+                { 
+                    FirstName = "Melissa",
+                    LastName = "DeBeau",
+                    Position = " Financial Administrative Associate",
+                    EXT = 235
+                },
+                new Contact 
+                { 
+                    FirstName = "Melissa",
+                    LastName = "Penner",
+                    Position = "Bereavement Advisor",
+                    EXT = 233
+                },
+                new Contact 
+                { 
+                    FirstName = "Sue",
+                    LastName = "Shipley",
+                    Position = "Pallative Care Consultant",
+                    Phone = 2899684068,
+                    EXT = 301
                 }
             };
             contacts.ForEach(d => context.Contacts.AddOrUpdate(n => n.EXT, d));
@@ -212,6 +285,43 @@ using System.Text;
                     sb.ToString(), ex
                 );
             }
+
+            var deaths = new List<DeathNotification>
+            {
+                new DeathNotification 
+                {
+                    Name = "Joe Smith",
+                    Date = DateTime.Parse("2014-12-16"), 
+                    Location = "Community Client",
+                    Notes = "Volunteer: Ted Tennant"
+                },
+
+                new DeathNotification 
+                {
+                    Name = "Rachel Jones",
+                    Date = DateTime.Parse("2014-12-14"), 
+                    Location = "The Stabler Centre",
+                    Notes = "Room 4"
+                },
+
+                new DeathNotification 
+                {
+                    Name = "Mary Brown",
+                    Date = DateTime.Parse("2014-12-08"), 
+                    Location = "NN Outreach Team",
+                    Notes = ""
+                },
+
+                new DeathNotification 
+                {
+                    Name = "Sally Williams",
+                    Date = DateTime.Parse("2014-11-30"), 
+                    Location = "NS Outreach Team",
+                    Notes = ""
+                },
+            };
+            deaths.ForEach(d => context.DeathNotifications.AddOrUpdate(n => n.Name, d));
+            context.SaveChanges();
 
             ////Role Manager
             //var roleManager = new RoleManager<IdentityRole>(new
