@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace HospiceWebPortal.Models
 {
@@ -20,8 +22,9 @@ namespace HospiceWebPortal.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("HospiceWebPortalEntities", throwIfV1Schema: false)
         {
+
         }
 
         public static ApplicationDbContext Create()
@@ -29,18 +32,39 @@ namespace HospiceWebPortal.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<HospiceWebPortal.Models.Home> Homes { get; set; }
+            public DbSet<Home> Homes { get; set; }
+            public DbSet<Admin> Admins { get; set; }
+            public DbSet<Announcement> Announcements { get; set; }
+            public DbSet<Resource> Resources { get; set; }
+            public DbSet<Meeting> Meetings { get; set; }
+            public DbSet<Schedule> Schedules { get; set; }
+            public DbSet<Contact> Contacts { get; set; }
 
-        public System.Data.Entity.DbSet<HospiceWebPortal.Models.Announcement> Announcements { get; set; }
+            protected override void OnModelCreating(DbModelBuilder modelBuilder)
+            {
+                //Prevents cascaade deleting
 
-        public System.Data.Entity.DbSet<HospiceWebPortal.Models.Admin> Admins { get; set; }
+                base.OnModelCreating(modelBuilder);
 
-        public System.Data.Entity.DbSet<HospiceWebPortal.Models.Contact> Contacts { get; set; }
+                modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            }
 
-        public System.Data.Entity.DbSet<HospiceWebPortal.Models.Meeting> Meetings { get; set; }
+            public System.Data.Entity.DbSet<HospiceWebPortal.Models.DeathNotification> DeathNotifications { get; set; }
 
-        public System.Data.Entity.DbSet<HospiceWebPortal.Models.Resource> Resources { get; set; }
 
-        public System.Data.Entity.DbSet<HospiceWebPortal.Models.Schedule> Schedules { get; set; }
+
+            //public System.Data.Entity.DbSet<HospiceWebPortal.Models.Home> Homes { get; set; }
+
+            //public System.Data.Entity.DbSet<HospiceWebPortal.Models.Announcement> Announcements { get; set; }
+
+            //public System.Data.Entity.DbSet<HospiceWebPortal.Models.Admin> Admins { get; set; }
+
+            //public System.Data.Entity.DbSet<HospiceWebPortal.Models.Contact> Contacts { get; set; }
+
+            //public System.Data.Entity.DbSet<HospiceWebPortal.Models.Meeting> Meetings { get; set; }
+
+            //public System.Data.Entity.DbSet<HospiceWebPortal.Models.Resource> Resources { get; set; }
+
+            //public System.Data.Entity.DbSet<HospiceWebPortal.Models.Schedule> Schedules { get; set; }
     }
 }

@@ -14,11 +14,13 @@ namespace HospiceWebPortal.Controllers
 {
     public class ResourcesController : Controller
     {
-        private HospiceWebPortalEntities db = new HospiceWebPortalEntities();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Resources
         public ActionResult Index(string sortOrder, string searchString)
         {
+            ViewData["Search"] = "\"" + searchString + "\"";
+
             ViewBag.DescriptionSortParm = sortOrder == "Description" ? "Description_desc" : "Description";
             ViewBag.DateSortParm = sortOrder == "Date" ? "Date_desc" : "Date";
             ViewBag.FileNameSortParm = sortOrder == "FileName" ? "FileName_desc" : "FileName";

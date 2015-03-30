@@ -13,13 +13,30 @@ namespace HospiceWebPortal.Controllers
 {
     public class HomesController : Controller
     {
-        private HospiceWebPortalEntities db = new HospiceWebPortalEntities();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Homes
         public ActionResult Index()
         {
             return View(db.Homes.ToList());
         }
+
+        [HttpPost]
+        public ActionResult Index(string title, string content, string author)
+        {
+                Home newFile = new Home
+                {
+                    Title = title,
+                    Content = content,
+                    Author = author,
+                    Created = DateTime.Today
+                };
+                db.Homes.Add(newFile);
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+        }
+
 
         // GET: Homes/Details/5
         public ActionResult Details(int? id)

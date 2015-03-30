@@ -14,18 +14,20 @@ namespace HospiceWebPortal.Controllers
 {
     public class ContactsController : Controller
     {
-        private HospiceWebPortalEntities db = new HospiceWebPortalEntities();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Contacts
         public ActionResult Index(string sortOrder, string searchString)
         {
-            ////Steph Change Start
+            //This is used to remove extra whitespace
+            ModelBinders.Binders.DefaultBinder = new TrimModelBinder();
+
+            //Passing SearchString To View
+            ViewData["Search"] = "\"" + searchString + "\"";
+
             ViewBag.FNameSortParm = sortOrder == "FName" ? "fname_desc" : "FName";
-            ////Steph Change End
             ViewBag.LNameSortParm = sortOrder == "LName" ? "lname_desc" : "LName";
-            ////Steph Change Start
             ViewBag.PositionSortParm = sortOrder == "Position" ? "Position_desc" : "Position";
-            ////Steph Change End
             var contacts = from s in db.Contacts
                            select s;
                 if (!String.IsNullOrEmpty(searchString))
@@ -33,9 +35,9 @@ namespace HospiceWebPortal.Controllers
                     contacts = contacts.Where(s => s.LastName.Contains(searchString)
                                            || s.FirstName.Contains(searchString) || s.Position.Contains(searchString));
                 }
+
                 switch (sortOrder)
                 {
-                    //Steph Changes Start
                     case "FName":
                         contacts = contacts.OrderBy(s => s.FirstName);
                         break;
@@ -54,7 +56,6 @@ namespace HospiceWebPortal.Controllers
                     case "Position_desc":
                         contacts = contacts.OrderByDescending(s => s.Position);
                         break;
-                    //Steph Changes End
                     default:
                         contacts = contacts.OrderBy(s => s.FirstName);
                         break;
@@ -81,6 +82,7 @@ namespace HospiceWebPortal.Controllers
         // GET: Contacts/Create
         public ActionResult Create()
         {
+            ModelBinders.Binders.DefaultBinder = new TrimModelBinder();
             return View();
         }
 
@@ -91,6 +93,7 @@ namespace HospiceWebPortal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Position,Phone,EXT")] Contact contact)
         {
+            ModelBinders.Binders.DefaultBinder = new TrimModelBinder();
             if (ModelState.IsValid)
             {
                 db.Contacts.Add(contact);
@@ -123,6 +126,7 @@ namespace HospiceWebPortal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Position,Phone,EXT")] Contact contact)
         {
+            ModelBinders.Binders.DefaultBinder = new TrimModelBinder();
             if (ModelState.IsValid)
             {
                 db.Entry(contact).State = EntityState.Modified;
@@ -165,6 +169,25 @@ namespace HospiceWebPortal.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+    }
+    public class TrimModelBinder : DefaultModelBinder
+    {
+        protected override void SetProperty(ControllerContext controllerContext,
+          ModelBindingContext bindingContext,
+          System.ComponentModel.PropertyDescriptor propertyDescriptor, object value)
+        {
+            if (propertyDescriptor.PropertyType == typeof(string))
+            {
+                var stringValue = (string)value;
+                if (!string.IsNullOrEmpty(stringValue))
+                    stringValue = stringValue.Trim();
+
+                value = stringValue;
+            }
+
+            base.SetProperty(controllerContext, bindingContext,
+                                propertyDescriptor, value);
         }
     }
 }

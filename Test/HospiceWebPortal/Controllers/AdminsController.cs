@@ -13,7 +13,7 @@ namespace HospiceWebPortal.Controllers
 {
     public class AdminsController : Controller
     {
-        private HospiceWebPortalEntities db = new HospiceWebPortalEntities();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admins
         public ActionResult Index()

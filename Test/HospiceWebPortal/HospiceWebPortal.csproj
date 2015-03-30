@@ -225,6 +225,14 @@
     <Compile Include="Migrations\201503160437125_resource_columns.Designer.cs">
       <DependentUpon>201503160437125_resource_columns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503300437428_nullable_datetime_home.cs" />
+    <Compile Include="Migrations\201503300437428_nullable_datetime_home.Designer.cs">
+      <DependentUpon>201503300437428_nullable_datetime_home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503300546155_merge_databases.cs" />
+    <Compile Include="Migrations\201503300546155_merge_databases.Designer.cs">
+      <DependentUpon>201503300546155_merge_databases.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -385,9 +393,11 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201503090905325_Initial_Create.resx">
       <DependentUpon>201503090905325_Initial_Create.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503090928210_models.resx">
       <DependentUpon>201503090928210_models.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503091426554_small_change.resx">
       <DependentUpon>201503091426554_small_change.cs</DependentUpon>
@@ -419,6 +429,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503160437125_resource_columns.resx">
       <DependentUpon>201503160437125_resource_columns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503300437428_nullable_datetime_home.resx">
+      <DependentUpon>201503300437428_nullable_datetime_home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503300546155_merge_databases.resx">
+      <DependentUpon>201503300546155_merge_databases.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

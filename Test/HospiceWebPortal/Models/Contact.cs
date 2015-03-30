@@ -43,6 +43,7 @@ namespace HospiceWebPortal.Models
         [DisplayFormat(DataFormatString = "{0:(###) ###-####}", ApplyFormatInEditMode = false)]
         public Int64? Phone { get; set; }
 
+        [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Count must be a natural number")]
         public int EXT { get; set; }
 
         public virtual ICollection<Announcement> Announcements { get; set; }

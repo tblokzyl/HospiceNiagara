@@ -18,9 +18,7 @@ namespace HospiceWebPortal.Models
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
 
-        [Display(Name = "Created")]
-        [DisplayFormat(DataFormatString = "{0:MMMM dd, yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime Created { get; set; }
+        public DateTime? Created { get; set; }
 
         [Display(Name = "Author")]
         [StringLength(100, ErrorMessage = "Position cannot be longer than 100 characters.")]

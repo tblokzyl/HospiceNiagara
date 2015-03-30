@@ -13,11 +13,13 @@ namespace HospiceWebPortal.Controllers
 {
     public class DeathNotificationsController : Controller
     {
-        private HospiceWebPortalEntities db = new HospiceWebPortalEntities();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: DeathNotifications
         public ActionResult Index(string sortOrder, string searchString)
         {
+            ViewData["Search"] = "\"" + searchString + "\"";
+
             ////Steph Change Start
             ViewBag.NameSortParm = sortOrder == "Name" ? "Name_desc" : "Name";
             ////Steph Change End
