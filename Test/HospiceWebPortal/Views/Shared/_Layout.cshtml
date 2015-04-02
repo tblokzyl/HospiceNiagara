@@ -42,7 +42,7 @@
                     <li>@Html.ActionLink("Schedules", "Index", "Schedules")</li>
                     <li>@Html.ActionLink("Contacts", "Index", "Contacts")</li>
                     <li>@Html.ActionLink("Resources", "Index", "Resources")</li>
-                    <li>@Html.ActionLink("Death Notifications", "Index", "DeathNotifications")</li>
+                    <li>@Html.ActionLink("In Memoriam", "Index", "DeathNotifications")</li>
                     @if (User.Identity.IsAuthenticated)
                     {
                         if (User.IsInRole("Admin"))
@@ -58,7 +58,7 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-        <footer style="margin-bottom:-20px">
+        <footer style="margin-bottom:-20px; bottom: 0;">
             <p>&copy; @DateTime.Now.Year - Hospice Niagara - The Stabler Centre <br> 403 Ontario Street, Unit 2<br> St. Catharines, ON L2B 1L5 <br> Tel: (905) 984-8766 <br> Fax: (905) 984-8242</p>
         </footer>
     }

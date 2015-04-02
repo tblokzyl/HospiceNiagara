@@ -11,6 +11,7 @@ using HospiceWebPortal.Models;
 
 namespace HospiceWebPortal.Controllers
 {
+
     public class DeathNotificationsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -88,6 +89,7 @@ namespace HospiceWebPortal.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,Date,Location,Notes")] DeathNotification deathNotification)
         {
@@ -120,6 +122,7 @@ namespace HospiceWebPortal.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,Date,Location,Notes")] DeathNotification deathNotification)
         {

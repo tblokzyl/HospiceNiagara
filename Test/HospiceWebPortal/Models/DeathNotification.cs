@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace HospiceWebPortal.Models
 {
@@ -22,6 +23,7 @@ namespace HospiceWebPortal.Models
         [StringLength(100, ErrorMessage = "Position cannot be longer than 100 characters.")]
         public string Location { get; set; }
 
+        [AllowHtml]
         [Display(Name = "Notes")]
         [DataType(DataType.MultilineText)]
         public string Notes { get; set; }

@@ -1,17 +1,23 @@
 ﻿html, body
 {
-    /*height:100%;*/
+    height:100%; /* needed for container min-height */
+        font-family: 'Open Sans';
 }
 
 body {
+    position:relative; /* needed for footer positioning*/
+    margin:0 auto; /* center, not in IE5 */
+    height:auto !important; /* real browsers */
+    height:100%; /* IE6: treaded as min-height*/
+    min-height:100%; /* real browsers */
     padding-top: 50px;
     padding-bottom: 20px;
-    font-family: 'Open Sans';
+    font-family: Verdana;
 }
 
 h2
 {
-    font-family: 'Open Sans';
+    font-family: Verdana;
 }
 
 .common-resources p, a, href
@@ -21,8 +27,13 @@ h2
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    position:relative; /* needed for footer positioning*/
+    margin:0 auto; /* center, not in IE5 */
+    min-height:100%; /* real browsers */
     padding-left: 15px;
     padding-right: 15px;
+        margin-bottom:100px;
+            font-family: Verdana;
     /*min-height:100%;
     overflow:auto;
         margin-bottom:-115px;*/
@@ -85,13 +96,16 @@ li {
 }
 
 footer {
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     clear: both;
     background-color: #80a23e;
-    padding: 20px 25px 10px 25px;
-    margin: 0px, -500px, -20px, -500px;
     text-align: center;
     color: white;
+    padding-top: 20px;
+    padding-bottom: 10px;
+
 }
 
 #logo {
@@ -109,6 +123,28 @@ footer {
 
 .popover{
     width:1000px;   
+}
+
+.mem-header
+{
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.memoriam-image
+{
+    padding-left:25px;
+    padding-right:25px;
+}
+
+.memoriam-image img
+{
+    width:60%;
+    float:right;
+    height:60%;
+    margin-right:-20px;
+    margin-top:-20px;
+    margin-bottom:10px;
 }
 
 @media (max-width: 967px) {
